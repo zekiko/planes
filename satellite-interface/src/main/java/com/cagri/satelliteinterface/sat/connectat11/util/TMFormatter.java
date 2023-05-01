@@ -1,11 +1,7 @@
 package com.cagri.satelliteinterface.sat.connectat11.util;
 
-import com.cagri.satelliteinterface.sat.connectat11.tm.ConnectaT11BeaconTM;
 import com.cagri.satelliteinterface.sat.connectat11.tm.TM;
 import org.springframework.stereotype.Component;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.util.StringJoiner;
 
 @Component
 public class TMFormatter {

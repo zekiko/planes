@@ -47,18 +47,16 @@ public class ConnectaT11Service implements SatService {
   @Scheduled(fixedDelay = CONNECTION_OPEN_DELAY)
   public void sendBeaconMessages() {
     log.info("girdi");
-    // send beacon to tm here
+    // send beacon to tm service here
     beacons.forEach(
         b -> {
           tmServiceClient.receive(b.toString());
         });
-    beacons.clear(); // clear beacon list
+    beacons.clear(); // clear beacon list after sent
   }
 
   @Override
   public void sendTMToGround(TMDto tmDto) {
-    // send tmDto to tm m-service
-    System.out.println("Sending tm to ground");
     tmServiceClient.receive(tmDto.getPayload());
   }
 
@@ -66,6 +64,5 @@ public class ConnectaT11Service implements SatService {
     TC tc = new TC(payload);
     TMDto tmDto = strategyFactory.generateResponse(tc);
     sendTMToGround(tmDto);
-    System.out.println("tm: " + tmDto.toString());
   }
 }
